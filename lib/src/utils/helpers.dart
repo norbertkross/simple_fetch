@@ -1,7 +1,6 @@
 import 'package:simple_fetch/src/enums/enums.dart';
 
 class Helpers {
-
   /// Assert if the response type matches
   static assertIsList(dynamic variable, ResponseTypeChecker checker) {
     if (variable is List && checker != ResponseTypeChecker.list) {
