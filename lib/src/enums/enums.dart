@@ -1,5 +1,1 @@
-
-enum ResponseTypeChecker{
-  list,
-  object
-}
+enum ResponseTypeChecker { list, object }

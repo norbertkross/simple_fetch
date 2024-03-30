@@ -10,11 +10,11 @@ class GetMethods extends SimpleFetch {
     required T Function(Map<String, dynamic>)? mapper,
     Function(dynamic transform)? transformer,
     List<int>? successCodes,
-   required ResponseTypeChecker? responseTypeChecker,
+    required ResponseTypeChecker? responseTypeChecker,
   }) {
     // Assert to prevent list response method being used as object response
-    Helpers.assertIsList(response.data, responseTypeChecker ?? ResponseTypeChecker.object);
-
+    Helpers.assertIsList(
+        response.data, responseTypeChecker ?? ResponseTypeChecker.object);
 
     if (successCodes?.contains(response.statusCode) == true) {
       // Parse JSON response and convert it to an instance of type T
@@ -33,7 +33,7 @@ class GetMethods extends SimpleFetch {
         message: response.statusMessage,
         response: response,
         stackTrace: StackTrace.current,
-        type:  DioExceptionType.badResponse,
+        type: DioExceptionType.badResponse,
         error: null,
       );
       // return null;
@@ -41,16 +41,16 @@ class GetMethods extends SimpleFetch {
   }
 
   /// Make an http GET request when the response is a list
- static Future<List<T?>> getListObjectTranformer<T>({
+  static Future<List<T?>> getListObjectTranformer<T>({
     required Response response,
     required T Function(Map<String, dynamic>)? mapper,
     Function(dynamic transform)? transformer,
     List<int>? successCodes,
-   required ResponseTypeChecker? responseTypeChecker,
+    required ResponseTypeChecker? responseTypeChecker,
   }) async {
-
     // Assert to prevent list response method being used as object response
-    Helpers.assertIsList(response.data,responseTypeChecker ?? ResponseTypeChecker.object);
+    Helpers.assertIsList(
+        response.data, responseTypeChecker ?? ResponseTypeChecker.object);
 
     if (successCodes?.contains(response.statusCode) == true) {
       // Parse JSON response and convert it to an instance of type T
@@ -63,14 +63,13 @@ class GetMethods extends SimpleFetch {
 
       List<T?>? data = jsonResponse?.map((e) => mapper?.call(e)).toList() ?? [];
       return data;
-
     } else {
       throw SimpleError(
         requestOptions: response.requestOptions,
         message: response.statusMessage,
         response: response,
         stackTrace: StackTrace.current,
-        type:  DioExceptionType.badResponse,
+        type: DioExceptionType.badResponse,
         error: null,
       );
     }

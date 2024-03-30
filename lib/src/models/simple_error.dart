@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 class SimpleError implements Exception {
-
   /// The [RequestOptions] used for the corresponding request.
   RequestOptions? requestOptions;
 
@@ -22,6 +21,5 @@ class SimpleError implements Exception {
     this.error,
     this.stackTrace,
     this.message,
-    
   });
 }
