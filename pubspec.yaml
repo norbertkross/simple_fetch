@@ -6,7 +6,7 @@ platforms:
   web:
   macos:
 
-version: 0.0.5
+version: 0.0.6
 
 description: |
   # A packages reduces the complexity of working with using http
@@ -24,7 +24,7 @@ repository: https://github.com/norbertkross/simple_fetch/blob/main/simple_fetch
 issue_tracker: https://github.com/norbertkross/simple_fetch/issues
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: '>=2.15.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:

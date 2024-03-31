@@ -1,3 +1,7 @@
+## 0.0.6
+
+Lowered sdk bundle contraints
+
 ## 0.0.5
 
 Fixed wrong link to repo
