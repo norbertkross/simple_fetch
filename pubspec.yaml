@@ -6,7 +6,7 @@ platforms:
   web:
   macos:
 
-version: 0.0.4
+version: 0.0.5
 
 description: |
   # A packages reduces the complexity of working with using http
@@ -20,7 +20,7 @@ topics:
   - middleware
 
 homepage: https://github.com/norbertkross/simple_fetch
-repository: https://github.com/norbertkross/simple_fetch/blob/main/dio
+repository: https://github.com/norbertkross/simple_fetch/blob/main/simple_fetch
 issue_tracker: https://github.com/norbertkross/simple_fetch/issues
 
 environment:

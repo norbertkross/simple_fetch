@@ -1,3 +1,7 @@
+## 0.0.5
+
+Fixed wrong link to repo
+
 ## 0.0.4
 
 * Updated docs
