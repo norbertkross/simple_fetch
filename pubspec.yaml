@@ -6,7 +6,7 @@ platforms:
   web:
   macos:
 
-version: 0.0.3
+version: 0.0.4
 
 description: |
   # A packages reduces the complexity of working with using http

@@ -1,4 +1,4 @@
-# dio
+# simple_fetch
 
 A wrapper around [Dio](https://pub.dev/packages?q=topic%3Adio). This make simple and reduce the complexities
 of working with models and http requests in Dart/Flutter.
@@ -30,7 +30,7 @@ String apiUrl = 'https://jsonplaceholder.typicode.com/todos/';
         url: apiUrl,
         mapper: (json) => Todo?.fromJson(json),
       );
-      
+
   }
 
 ```
