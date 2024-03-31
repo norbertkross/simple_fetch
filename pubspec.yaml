@@ -1,14 +1,24 @@
 name: simple_fetch
-version: 0.0.1
+
+platforms:
+  android:
+  ios:
+  web:
+  macos:
+
+version: 0.0.2
+
 description: |
   # A packages reduces the complexity of working with using http
   # response as Models
+
 topics:
   - dio
   - http
   - network
   - interceptor
   - middleware
+
 homepage: https://github.com/norbertkross/simple_fetch
 repository: https://github.com/norbertkross/simple_fetch/blob/main/dio
 issue_tracker: https://github.com/norbertkross/simple_fetch/issues

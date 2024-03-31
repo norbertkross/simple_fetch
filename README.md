@@ -12,30 +12,25 @@ Add the `simple_fetch` package to your
 [pubspec dependencies](https://pub.dev/packages/simple_fetch/install).
 
 
-### Simple use
-
 ```dart
 import 'package:simple_fetch/simple_fetch.dart';
 
 final simpleFetch = SimpleFetch();
 String apiUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
+```
+
+### Very simple use
+
+```dart
 
   testGet()async{
-    try {
+
       List<Todo?> allProductsData = await simpleFetch.getList<Todo>(
         url: apiUrl,
         mapper: (json) => Todo?.fromJson(json),
-        // transformer: (transform) => transform['data'],
       );
-
-      print(allProductsData.map((e) => e?.toJson()).toList());
-
-    } on SimpleError catch (exception) {
-
-      print(exception.message);
-
-    } catch (e) {}
+      
   }
 
 ```
