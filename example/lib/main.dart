@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:example/models/todo_model.dart';
 import 'package:simple_fetch/simple_fetch.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -34,15 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return const SimpleFetchTestApp();
   }
 }
-
-
-
 
 class SimpleFetchTestApp extends StatefulWidget {
   const SimpleFetchTestApp({super.key});
@@ -52,9 +46,7 @@ class SimpleFetchTestApp extends StatefulWidget {
 }
 
 class _SimpleFetchTestAppState extends State<SimpleFetchTestApp> {
-
   void getDataFromEndpoint() async {
-
     SimpleFetch simpleFetch = SimpleFetch();
 
     String apiUrl = 'https://jsonplaceholder.typicode.com/todos/';
@@ -62,13 +54,15 @@ class _SimpleFetchTestAppState extends State<SimpleFetchTestApp> {
     try {
       List<Todo?> allProductsData = await simpleFetch.getList<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
       );
 
-      print(allProductsData.map((e) => e?.toJson()).toList());
+      debugPrint('${allProductsData.map((e) => e?.toJson()).toList()}');
     } on SimpleError catch (exception) {
-      print(exception.message);
-    } catch (e) {}
+      debugPrint(exception.toString());
+    } catch (e) {
+      debugPrint('$e');
+    }
   }
 
   void getOneDataItemFromEndpoint() async {
@@ -79,13 +73,15 @@ class _SimpleFetchTestAppState extends State<SimpleFetchTestApp> {
     try {
       Todo? productsData = await simpleFetch.get<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
         // transformer: (transform) => transform['data'],
       );
-      print(productsData?.toJson());
+      debugPrint('${productsData?.toJson()}');
     } on SimpleError catch (exception) {
-      print(exception.message);
-    } catch (e) {}
+      debugPrint(exception.toString());
+    } catch (e) {
+      debugPrint('$e');
+    }
   }
 
   @override
@@ -93,28 +89,26 @@ class _SimpleFetchTestAppState extends State<SimpleFetchTestApp> {
     return Scaffold(
       body: ListView(
         children: [
-          const SizedBox(
-            height: 120,
-          ),
+          const SizedBox(height: 120),
           Column(
             children: [
               CupertinoButton(
-                  color: Theme.of(context).primaryColor,
-                  child: const Text("Fetch All..."),
-                  onPressed: () {
-                    getDataFromEndpoint();
-                  }),
-             const SizedBox(
-                height: 60,
+                color: Theme.of(context).primaryColor,
+                child: const Text("Fetch All..."),
+                onPressed: () {
+                  getDataFromEndpoint();
+                },
               ),
+              const SizedBox(height: 60),
               CupertinoButton(
-                  color: Theme.of(context).primaryColor,
-                  child: const Text("Single Fetch..."),
-                  onPressed: () {
-                    getOneDataItemFromEndpoint();
-                  }),
+                color: Theme.of(context).primaryColor,
+                child: const Text("Single Fetch..."),
+                onPressed: () {
+                  getOneDataItemFromEndpoint();
+                },
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

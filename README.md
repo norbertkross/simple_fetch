@@ -1,7 +1,8 @@
 # simple_fetch
 
-A wrapper around [Dio](https://pub.dev/packages?q=topic%3Adio). This make simple and reduce the complexities
-of working with models and http requests in Dart/Flutter.
+A wrapper around [Dio](https://pub.dev/packages/dio) that maps a response into a model in one call. It works for a single JSON object, a list, and nested payloads such as `{"data": [...]}`.
+
+Any 2xx status is success. Pass `successCodes` to allow or require specific codes, including codes outside 2xx. An empty body becomes `null`, or an empty list from the list methods. Pass `baseOptions` or an existing `Dio` to set a base URL, headers, and timeouts. `url` is required.
 
 
 ## Get started
@@ -28,7 +29,7 @@ String apiUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
       List<Todo?> allProductsData = await simpleFetch.getList<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
       );
 
   }
@@ -50,7 +51,7 @@ Performing a `GET` request :
     try {
       Todo? productsData = await simpleFetch.get<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
         // transformer: (transform) => transform['data'],
       );
       print(productsData?.toJson());
@@ -71,7 +72,7 @@ Performing a `GET` request :
     try {
       List<Todo?> allProductsData = await simpleFetch.getList<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
       );
 
       print(allProductsData.map((e) => e?.toJson()).toList());
@@ -96,7 +97,7 @@ Performing a `POST` request:
       Todo? productsData = await simpleFetch.post<Todo>(
         url: apiUrl,
         data: {'id': 1, 'name': 'hello'},
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
         // transformer: (transform) => transform['data'],
       );
       print(productsData?.toJson());
@@ -117,7 +118,7 @@ Performing a `POST` request:
       List<Todo?> allProductsData = await simpleFetch.postList<Todo>(
         url: apiUrl,
         data: {'id': 2, 'name': 'Hiiii'},
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
       );
 
       print(allProductsData.map((e) => e?.toJson()).toList());
@@ -166,7 +167,7 @@ In this case you may want to return an list so you can do
     try {
       List<Todo?> allProductsData = await simpleFetch.getList<Todo>(
         url: apiUrl,
-        mapper: (json) => Todo?.fromJson(json),
+        mapper: Todo.fromJson,
         transformer: (transform) => transform['data'],
       );
 
